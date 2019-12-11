@@ -1,0 +1,37 @@
+[
+  {
+    "EventName": "Liverpool - Juventus",
+    "OddsForFirstTeam": 1.95,
+    "OddsForDraw": 3.15,
+    "OddsForSecondTeam": 2.20,
+    "EventStartDate": "2018-12-25T22:00:00"
+  },
+  {
+    "EventName": "Grigor Dimitrov - Rafael Nadal",
+    "OddsForFirstTeam": 2.00,
+    "OddsForDraw": 3.05,
+    "OddsForSecondTeam": 2.70,
+    "EventStartDate": "2018-06-06T19:00:00"
+  },
+  {
+    "EventName": "Barcelona - Ludogorets",
+    "OddsForFirstTeam": 1.01,
+    "OddsForDraw": 4.20,
+    "OddsForSecondTeam": 15.20,
+    "EventStartDate": "1055-12-31T18:30:00"
+  },
+  {
+    "EventName": "Real Madrid - Valencia",
+    "OddsForFirstTeam": 1.95,
+    "OddsForDraw": 3.15,
+    "OddsForSecondTeam": 2.90,
+    "EventStartDate": "2019-12-20T19:00:00"
+  },
+  {
+    "EventName": "PSG - Monako",
+    "OddsForFirstTeam": 1.66,
+    "OddsForDraw": 3.30,
+    "OddsForSecondTeam": 5.20,
+    "EventStartDate": "2019-12-20T21:45:00"
+  }
+]
