@@ -9,6 +9,7 @@ using BC.Services.Contracts;
 using BC.Web.Mappers;
 using BC.Web.Models;
 using NToastNotify;
+using BC.Services.CustomExeptions;
 
 namespace GVC_BettingCalendar.Controllers
 {
@@ -55,22 +56,32 @@ namespace GVC_BettingCalendar.Controllers
 
                 var updatedEventVm = updatedEventDto.MapToEventVm();
 
+                _toast.AddSuccessToastMessage("You successfully Update event!");
 
                 return PartialView("_UpdatedRowPartial", updatedEventVm);
             }
-            catch (Exception ex)
+            catch (BetExeption ex)
             {
-                throw new ArgumentException(ex.Message);
+                _toast.AddErrorToastMessage(ex.Message);
+                throw new BetExeption(ex.Message);
             }
         }
 
         public async Task<IActionResult> AddEvent(string name, string first, string draw, string second, string date)
         {
             //validation
-            var addedEventDto = await _editModeService.AddEvent(name, first, draw, second, date);
-            var addedEventVm = addedEventDto.MapToEventVm();
-
-            return PartialView("_UpdatedRowPartial", addedEventVm);
+            try
+            {
+                var addedEventDto = await _editModeService.AddEvent(name, first, draw, second, date);
+                var addedEventVm = addedEventDto.MapToEventVm();
+                _toast.AddSuccessToastMessage("You successfully Add new event!");
+                return PartialView("_UpdatedRowPartial", addedEventVm);
+            }
+            catch (BetExeption ex)
+            {
+                _toast.AddErrorToastMessage(ex.Message);
+                throw new BetExeption(ex.Message);
+            }
         }
 
         public async Task DeleteEvent(int id)

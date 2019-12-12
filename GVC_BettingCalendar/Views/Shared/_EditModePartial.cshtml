@@ -47,7 +47,7 @@
                         <input id="@("Second"+Model[i].Id)" asp-for="@Model[i].OddsForSecondTeam" class="form-control" style="border:0px" />
                     </td>
                     <td class="my-th">
-                        <input id="@("Date"+Model[i].Id)" asp-for="@Model[i].EventStartDate" class="form-control" style="border:0px" />
+                        <input id="@("Date"+Model[i].Id)" asp-for="@Model[i].EventStartDate" class="form-control" type="datetime" style="border:0px" />
                     </td>
                     <td>
                         <input type="submit" value="Save" class="btn saveBtn" data-eventId="@Model[i].Id" data-eventName="@Model[i].EventName"

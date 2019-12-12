@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
 <body>
-    
+
     <div class="container">
         @*<partial name="_CookieConsentPartial" />*@
         <main role="main" class="pb-3">
@@ -26,7 +26,7 @@
         </main>
     </div>
 
-   
+
     <environment include="Development">
         <script src="~/lib/jquery/dist/jquery.js"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.js"></script>
@@ -54,5 +54,6 @@
     <script src="~/js/onLoad.js"></script>
 
     @RenderSection("Scripts", required: false)
+    @await Component.InvokeAsync("NToastNotify")
 </body>
 </html>
