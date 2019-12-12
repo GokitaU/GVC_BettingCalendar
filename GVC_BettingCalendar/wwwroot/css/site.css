@@ -25,6 +25,17 @@ a.navbar-brand {
     padding: 5px
 }
 
+.edit-th, td {
+    text-align: center;
+    border: 2px solid black;
+    padding: 5px
+}
+.edit-th {
+    background-color: white;
+    color: black;
+    text-align: center;
+}
+
 .bordersHidden {
     border-right: hidden;
 }

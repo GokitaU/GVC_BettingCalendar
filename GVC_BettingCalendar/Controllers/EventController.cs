@@ -60,10 +60,10 @@ namespace GVC_BettingCalendar.Controllers
 
                 return PartialView("_UpdatedRowPartial", updatedEventVm);
             }
-            catch (BetExeption ex)
+            catch (BetException ex)
             {
                 _toast.AddErrorToastMessage(ex.Message);
-                throw new BetExeption(ex.Message);
+                throw new BetException(ex.Message);
             }
         }
 
@@ -77,10 +77,10 @@ namespace GVC_BettingCalendar.Controllers
                 _toast.AddSuccessToastMessage("You successfully Add new event!");
                 return PartialView("_UpdatedRowPartial", addedEventVm);
             }
-            catch (BetExeption ex)
+            catch (BetException ex)
             {
                 _toast.AddErrorToastMessage(ex.Message);
-                throw new BetExeption(ex.Message);
+                throw new BetException(ex.Message);
             }
         }
 

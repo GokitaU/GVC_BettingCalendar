@@ -1,6 +1,9 @@
 ﻿$('#addBtn').on("click", function () {
-
-    var row = '<tr id="custom"><td>Id</td><td><input id="customName" asp-for="@Model[i].EventName" class="form-control" style="border:0px"/></td><td><input id="customFirst" asp-for="@Model[i].OddsForFirstTeam" class="form-control" style="border:0px"/></td><td><input id="customDraw" asp-for="@Model[i].OddsForDraw" class="form-control" style="border:0px" /></td><td><input id="customSecond" asp-for="@Model[i].OddsForSecondTeam" class="form-control" style="border:0px" /></td><td><input id="customDate" asp-for="@Model[i].EventStartDate" class="form-control" style="border:0px" /></td> <td><input type="submit" id="addNewEventButton" value="Add" class="btn saveBtn" data-eventId="@Model[i].Id" data-eventName="@Model[i].EventName" data-eventFirst="@Model[i].OddsForFirstTeam" data-eventDraw="@Model[i].OddsForDraw" data-eventSecond="@Model[i].OddsForSecondTeam" data-eventDate="@Model[i].EventStartDate" /></td></tr>';
+    
+    var today = $(this).attr('data-dateNow');
+    var date = today.concat(' 23:59');
+    console.log(today);
+    var row = '<tr id="custom"><td>Id</td><td><input id="customName" asp-for="@Model[i].EventName" class="form-control" style="border:0px"/></td><td><input id="customFirst" asp-for="@Model[i].OddsForFirstTeam" class="form-control" style="border:0px"/></td><td><input id="customDraw" asp-for="@Model[i].OddsForDraw" class="form-control" style="border:0px" /></td><td><input id="customSecond" asp-for="@Model[i].OddsForSecondTeam" class="form-control" style="border:0px" /></td><td><input id="customDate" asp-for="@Model[i].EventStartDate" class="form-control" style="border:0px" value='+date+'/></td> <td><input type="submit" id="addNewEventButton" value="Add" class="btn saveBtn" data-eventId="@Model[i].Id" data-eventName="@Model[i].EventName" data-eventFirst="@Model[i].OddsForFirstTeam" data-eventDraw="@Model[i].OddsForDraw" data-eventSecond="@Model[i].OddsForSecondTeam" data-eventDate="@Model[i].EventStartDate" /></td></tr>';
 
     $('#tableEdit').append(row);
 

@@ -45,7 +45,7 @@ namespace BC.Services
             }
             catch (Exception)
             {
-                throw new BetExeption(ExceptionMessages.InvalidModelState);
+                throw new BetException(ExceptionMessages.InvalidModelState);
             }
         }
 
@@ -58,12 +58,16 @@ namespace BC.Services
                 CultureInfo culture = new CultureInfo("en-US");
                 DateTime tempDate = Convert.ToDateTime(date, culture);
 
+                var oddsFirst = double.Parse(first);
+                var oddsDraw = double.Parse(draw);
+                var oddsSec = double.Parse(second);
+
                 var eventCtx = new Event
                 {
                     EventName = name,
-                    OddsForFirstTeam = double.Parse(first),
-                    OddsForDraw = double.Parse(draw),
-                    OddsForSecondTeam = double.Parse(second),
+                    OddsForFirstTeam = oddsFirst,
+                    OddsForDraw = oddsDraw,
+                    OddsForSecondTeam = oddsSec,
                     EventStartDate = tempDate
                 };
 
@@ -75,9 +79,9 @@ namespace BC.Services
 
                 return addedEventDto;
             }
-            catch (BetExeption)
+            catch (Exception)
             {
-                throw new BetExeption(ExceptionMessages.InvalidModelState);
+                throw new BetException(ExceptionMessages.InvalidModelState);
             }
             
         }

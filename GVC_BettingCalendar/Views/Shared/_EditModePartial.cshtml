@@ -16,12 +16,14 @@
 
         <table id="tableEdit" class="tableBody" style="padding-top:100px">
             <tr>
-                <th class="my-th" style="width:220px">EventId</th>
-                <th class="my-th" style="width:220px">EventName</th>
-                <th class="my-th" style="width:220px">OddsForFirstTeam</th>
-                <th class="my-th" style="width:220px">OddsForDraw</th>
-                <th class="my-th" style="width:220px">OddsForSecondTeam</th>
-                <th class="my-th" style="width:220px">EventStartDate</th>
+                <th class="edit-th col-xs-1" >EventId</th>
+                <th class="edit-th col-md-8" >EventName</th>
+                <th class="edit-th" >OddsForFirstTeam</th>
+                <th class="edit-th" >OddsForDraw</th>
+                <th class="edit-th" >OddsForSecondTeam</th>
+                <th class="edit-th" >EventStartDate</th>
+                <th class="edit-th" style="border:none"></th>
+                <th class="edit-th" style="border:none"></th>
             </tr>
             @for (int i = 0; i < Model.Count; i++)
             {
@@ -34,19 +36,19 @@
                         <input type="hidden" asp-for="@Model[i].Id">
                         @Model[i].Id
                     </td>
-                    <td class="my-th">
+                    <td class="edit-th">
                         <input id="@("Name"+Model[i].Id)" asp-for="@Model[i].EventName" class="form-control" style="border:0px" />
                     </td>
-                    <td class="my-th">
-                        <input id="@("First"+Model[i].Id)" asp-for="@Model[i].OddsForFirstTeam" class="form-control" style="border:0px" />
+                    <td class="edit-th">
+                        <input id="@("First"+Model[i].Id)" asp-for="@Model[i].OddsForFirstTeam" class="form-control" style="border:0px; text-align:center" />
                     </td>
-                    <td class="my-th">
-                        <input id="@("Draw"+Model[i].Id)" asp-for="@Model[i].OddsForDraw" class="form-control" style="border:0px" />
+                    <td class="edit-th">
+                        <input id="@("Draw"+Model[i].Id)" asp-for="@Model[i].OddsForDraw" class="form-control" style="border:0px;  text-align:center" />
                     </td>
-                    <td class="my-th">
-                        <input id="@("Second"+Model[i].Id)" asp-for="@Model[i].OddsForSecondTeam" class="form-control" style="border:0px" />
+                    <td class="edit-th">
+                        <input id="@("Second"+Model[i].Id)" asp-for="@Model[i].OddsForSecondTeam" class="form-control" style="border:0px;  text-align:center" />
                     </td>
-                    <td class="my-th">
+                    <td class="edit-th">
                         <input id="@("Date"+Model[i].Id)" asp-for="@Model[i].EventStartDate" class="form-control" type="datetime" style="border:0px" />
                     </td>
                     <td>
@@ -62,7 +64,7 @@
 
         </table>
         <input type="hidden" value="0" id="total_row">
-        <button class="btn-group float-md-left" style="margin-top:50px" id="addBtn" value="AddEvent">AddEvent</button>
+        <button class="btn-group float-md-left" style="margin-top:50px" id="addBtn" value="AddEvent" data-dateNow="@DateTime.Now.ToString("dd/MM/yyyy HH:mm", DateTimeFormatInfo.InvariantInfo)">AddEvent</button>
         @*</form>*@
 
     </center>

@@ -21,7 +21,7 @@ namespace BC.Web.Mappers
             eventVm.OddsForDraw = $"{eventDto.OddsForDraw:N2}";
             eventVm.OddsForSecondTeam = $"{eventDto.OddsForSecondTeam:N2}";
             eventVm.EventStartDate =
-                eventDto.EventStartDate.ToString("g", DateTimeFormatInfo.InvariantInfo);
+                eventDto.EventStartDate.ToString("dd/MM/yyyy HH:mm", DateTimeFormatInfo.InvariantInfo);
 
             if (eventDto.EventStartDate < DateTime.Now)
                 eventVm.IsPassed = true;

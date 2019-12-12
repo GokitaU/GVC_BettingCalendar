@@ -2,13 +2,13 @@
 
 namespace BC.Services.CustomExeptions
 {
-    public class BetExeption : Exception
+    public class BetException : Exception
     {
-        public BetExeption()
+        public BetException()
         {
         }
 
-        public BetExeption(string message)
+        public BetException(string message)
             : base(message)
         {
         }
