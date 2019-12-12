@@ -1,15 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using GVC_BettingCalendar.Models;
 using BC.Services.Contracts;
 using BC.Web.Mappers;
-using BC.Web.Models;
 using NToastNotify;
 using BC.Services.CustomExeptions;
+using BC.Services.Utils;
 
 namespace GVC_BettingCalendar.Controllers
 {
@@ -23,9 +21,12 @@ namespace GVC_BettingCalendar.Controllers
                                IEditModeService editModeService,
                                IToastNotification toast)
         {
-            _previewModeService = previewModeService;
-            _editModeService = editModeService;
-            _toast = toast;
+            _previewModeService = previewModeService
+                          ?? throw new BetException(ExceptionMessages.PreviewModeServiceNull);
+            _editModeService = editModeService
+                          ?? throw new BetException(ExceptionMessages.EditModeServiceContextNull);
+            _toast = toast
+                          ?? throw new BetException(ExceptionMessages.ToastNull);
         }
 
         [HttpGet]
@@ -52,6 +53,12 @@ namespace GVC_BettingCalendar.Controllers
         {
             try
             {
+                id.ValidateIfNull();
+                name.ValidateIfNull();
+                first.ValidateOdds();
+                draw.ValidateOdds();
+                second.ValidateOdds();
+
                 var updatedEventDto = await _editModeService.UpdateEvent(id, name, first, draw, second, date);
 
                 var updatedEventVm = updatedEventDto.MapToEventVm();
@@ -69,9 +76,13 @@ namespace GVC_BettingCalendar.Controllers
 
         public async Task<IActionResult> AddEvent(string name, string first, string draw, string second, string date)
         {
-            //validation
             try
             {
+                name.ValidateIfNull();
+                first.ValidateOdds();
+                draw.ValidateOdds();
+                second.ValidateOdds();
+
                 var addedEventDto = await _editModeService.AddEvent(name, first, draw, second, date);
                 var addedEventVm = addedEventDto.MapToEventVm();
                 _toast.AddSuccessToastMessage("You successfully Add new event!");

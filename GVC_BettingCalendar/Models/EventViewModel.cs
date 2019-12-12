@@ -1,13 +1,9 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace BC.Web.Models
 {
     public class EventViewModel
     {
-        
-
 
         [Required(ErrorMessage = "EventId is required!")]
         public int Id { get; set; }
@@ -29,6 +25,5 @@ namespace BC.Web.Models
         public string EventStartDate { get; set; }
 
         public bool IsPassed { get; set; }
-
     }
 }

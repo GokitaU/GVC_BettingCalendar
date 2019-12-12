@@ -48,7 +48,7 @@ namespace GVC_BettingCalendar
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                //custm err
+                app.UseDatabaseErrorPage();
             }
             else
             {
@@ -57,6 +57,7 @@ namespace GVC_BettingCalendar
                 app.UseHsts();
             }
 
+            app.UseStatusCodePagesWithReExecute("/error/{}");
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();

@@ -1,7 +1,7 @@
-﻿using BC.Services.Contracts;
-using Microsoft.Extensions.DependencyInjection;
-using System.Linq;
+﻿using System.Linq;
 using System.Reflection;
+using Microsoft.Extensions.DependencyInjection;
+using BC.Services.Contracts;
 
 namespace BC.Web.Infrastructure
 {
@@ -25,5 +25,4 @@ namespace BC.Web.Infrastructure
             return services;
         }
     }
-
 }

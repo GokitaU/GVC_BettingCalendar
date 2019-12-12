@@ -1,5 +1,3 @@
-using System;
-
 namespace GVC_BettingCalendar.Models
 {
     public class ErrorViewModel

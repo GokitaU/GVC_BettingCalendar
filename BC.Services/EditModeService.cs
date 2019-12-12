@@ -5,10 +5,7 @@ using BC.DTOs.Mappers;
 using BC.Services.Contracts;
 using BC.Services.CustomExeptions;
 using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace BC.Services
@@ -19,7 +16,7 @@ namespace BC.Services
 
         public EditModeService(BettingContext context)
         {
-            _context = context;
+            _context = context ?? throw new BetException(ExceptionMessages.ContextNull);
         }
         public async Task<EventDTO> UpdateEvent(int id, string name, string first, string draw, string second, string date)
         {
@@ -52,7 +49,6 @@ namespace BC.Services
 
         public async Task<EventDTO> AddEvent(string name, string first, string draw, string second, string date)
         {
-            //validate all...
             try
             {
                 CultureInfo culture = new CultureInfo("en-US");
@@ -83,9 +79,7 @@ namespace BC.Services
             {
                 throw new BetException(ExceptionMessages.InvalidModelState);
             }
-            
         }
-
 
         public async Task<string> DeleteEvent(int id)
         {

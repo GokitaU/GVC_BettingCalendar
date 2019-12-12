@@ -1,8 +1,6 @@
-﻿using BC.DTOs;
-using System;
+﻿using System.Threading.Tasks;
 using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
+using BC.DTOs;
 
 namespace BC.Services.Contracts
 {

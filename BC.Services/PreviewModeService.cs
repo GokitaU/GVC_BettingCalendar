@@ -2,8 +2,8 @@
 using BC.DTOs;
 using BC.DTOs.Mappers;
 using BC.Services.Contracts;
+using BC.Services.CustomExeptions;
 using Microsoft.EntityFrameworkCore;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,11 +16,11 @@ namespace BC.Services
 
         public PreviewModeService(BettingContext context)
         {
-            _context = context ?? throw new ArgumentNullException();
+            _context = context ?? throw new BetException(ExceptionMessages.ContextNull);
         }
         public async Task<ICollection<EventDTO>> GetTenEventsAsync()
         {
-            //make pagination
+            //pagination
             var events = await _context.Events
                                        .Where(e=>e.IsDeleted == null)
                                        .Select(e => e.MapToEventDTO())

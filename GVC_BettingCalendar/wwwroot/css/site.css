@@ -43,7 +43,7 @@ a.navbar-brand {
 .tableBody {
     border-collapse: separate;
     border-spacing: 3px 3px;
-
+    width:100%;
 }
 .tableHeader {
     border-collapse: separate;
