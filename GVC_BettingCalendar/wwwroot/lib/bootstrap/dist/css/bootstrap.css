@@ -3285,6 +3285,17 @@ input[type="button"].btn-block {
   vertical-align: middle;
 }
 
+
+.myButton {
+    padding: 30px;
+    display: block;
+    text-align: center;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+
 .btn-group > .btn,
 .btn-group-vertical > .btn {
   position: relative;

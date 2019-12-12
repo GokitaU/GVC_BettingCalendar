@@ -1,0 +1,62 @@
+﻿@model IEnumerable<EventViewModel>
+@{
+    Layout = "_Layout";
+}
+    <form method="get" asp-controller="Event" asp-action="TableEditMode">
+        <button class="btn-group float-sm-right" style="margin-top:10px">Edit Mode</button>
+    </form>
+<body>
+    <center>
+        <table class="tableBody" style="padding-top:100px">
+            <tr>
+                <th class="my-th" style="width:220px">EventName</th>
+                <th class="my-th" style="width:220px">OddsForFirstTeam</th>
+                <th class="my-th" style="width:220px">OddsForDraw</th>
+                <th class="my-th" style="width:220px">OddsForSecondTeam</th>
+                <th class="my-th" style="width:220px">EventStartDate</th>
+            </tr>
+            @{ var odd = true; }
+            @foreach (var item in Model)
+            {
+                if (item.IsPassed)
+                {
+                    <tr>
+                        <td class="my-th passedRow">@item.EventName</td>
+                        <td class="my-th passedRow">@item.OddsForFirstTeam</td>
+                        <td class="my-th passedRow">@item.OddsForDraw</td>
+                        <td class="my-th passedRow">@item.OddsForSecondTeam</td>
+                        <td class="my-th passedRow">@item.EventStartDate</td>
+                    </tr>
+
+                    odd = !odd;
+                }
+                else
+                {
+                    if (odd == true)
+                    {
+                        <tr>
+                            <td class="my-th oddRow">@item.EventName</td>
+                            <td class="my-th oddRow">@item.OddsForFirstTeam</td>
+                            <td class="my-th oddRow">@item.OddsForDraw</td>
+                            <td class="my-th oddRow">@item.OddsForSecondTeam</td>
+                            <td class="my-th oddRow">@item.EventStartDate</td>
+                        </tr>
+                        odd = false;
+                    }
+                    else
+                    {
+                        <tr>
+                            <td class="my-th evenRow">@item.EventName</td>
+                            <td class="my-th evenRow">@item.OddsForFirstTeam</td>
+                            <td class="my-th evenRow">@item.OddsForDraw</td>
+                            <td class="my-th evenRow">@item.OddsForSecondTeam</td>
+                            <td class="my-th evenRow">@item.EventStartDate</td>
+                        </tr>
+                        odd = true;
+                    }
+                }
+            }
+
+        </table>
+    </center>
+</body>

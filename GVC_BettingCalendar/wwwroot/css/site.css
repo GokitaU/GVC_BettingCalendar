@@ -7,10 +7,58 @@ a.navbar-brand {
   word-break: break-all;
 }
 
+/*for table*/
+.my-table {
+    border-collapse: collapse;
+}
+
+.my-th {
+    background-color: white;
+    color: black;
+    width:220px;
+}
+
+.my-th, td {
+    width: 220px;
+    text-align: center;
+    border: 2px solid black;
+    padding: 5px
+}
+
+.bordersHidden {
+    border-right: hidden;
+}
+
+.tableBody {
+    border-collapse: separate;
+    border-spacing: 3px 3px;
+
+}
+.tableHeader {
+    border-collapse: separate;
+    border-spacing: 3px 0px;
+    
+    padding-top: 100px;
+}
+
+.h1 {
+    color: black;   
+}
+
+.passedRow {
+    background-color: lightsalmon;
+}
+.oddRow {
+    background-color: AliceBlue;
+}
+.evenRow {
+    background-color: HoneyDew;
+}
+
 /* Sticky footer styles
 -------------------------------------------------- */
 html {
-  font-size: 14px;
+    font-size: 14px;
 }
 @media (min-width: 768px) {
   html {

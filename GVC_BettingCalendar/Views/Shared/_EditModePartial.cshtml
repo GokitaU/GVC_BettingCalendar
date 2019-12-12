@@ -1,0 +1,73 @@
+﻿@model IList<EventViewModel>
+@{
+    Layout = "_Layout";
+}
+    <head>
+        <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+        
+    </head>
+<body>
+    <form method="get" asp-controller="Event" asp-action="TablePreviewMode">
+        <button class="btn-group float-sm-right" style="margin-top:10px">Preview Mode</button>
+    </form>
+    <center>
+        @*<form asp-controller="Event" asp-action="Update" method="post"
+              enctype="multipart/form-data">*@
+
+            <table class="tableBody" style="padding-top:100px">
+                <tr>
+                    <th class="my-th" style="width:220px">EventId</th>
+                    <th class="my-th" style="width:220px">EventName</th>
+                    <th class="my-th" style="width:220px">OddsForFirstTeam</th>
+                    <th class="my-th" style="width:220px">OddsForDraw</th>
+                    <th class="my-th" style="width:220px">OddsForSecondTeam</th>
+                    <th class="my-th" style="width:220px">EventStartDate</th>
+                </tr>
+                @for (int i = 0; i < Model.Count; i++)
+                {
+                    @*<div asp-validation-summary="ModelOnly" class="text-danger"></div>*@
+                    @*data-id="@item.Id" data-name="@item.EventName"
+                        data-first="@item.OddsForFirstTeam" data-draw="@item.OddsForDraw"
+                        data-second="@item.OddsForSecondTeam" data-date="@item.EventStartDate"*@
+                    <tr>
+                        <td class="my-th">
+                            <input type="hidden" asp-for="@Model[i].Id">
+                            <input asp-for="@Model[i].Id" class="form-control disabled" style="border:0px" />
+                        </td>
+                        <td class="my-th">
+                            <input id = "@("Name"+Model[i].Id)"  asp-for="@Model[i].EventName" class="form-control" style="border:0px" />
+                        </td>
+                        <td class="my-th">
+                            <input id = "@("First"+Model[i].Id)" asp-for="@Model[i].OddsForFirstTeam" class="form-control" style="border:0px" />
+                        </td>
+                        <td class="my-th">
+                            <input id = "@("Draw"+Model[i].Id)" asp-for="@Model[i].OddsForDraw" class="form-control" style="border:0px" />
+                        </td>
+                        <td class="my-th">
+                            <input id = "@("Second"+Model[i].Id)" asp-for="@Model[i].OddsForSecondTeam" class="form-control" style="border:0px" />
+                        </td>
+                        <td class="my-th">
+                            <input  id = "@("Date"+Model[i].Id)"  asp-for="@Model[i].EventStartDate" class="form-control" style="border:0px" />
+                        </td>
+                        <td>
+                            <input type="submit" value="Save" class="btn saveBtn" data-eventId="@Model[i].Id" data-eventName="@Model[i].EventName"
+                                   data-eventFirst="@Model[i].OddsForFirstTeam" data-eventDraw="@Model[i].OddsForDraw"
+                                   data-eventSecond="@Model[i].OddsForSecondTeam" data-eventDate="@Model[i].EventStartDate" />
+                        </td>
+                        <td><button class="btn ">Delete</button></td>
+                    </tr>
+                }
+
+            </table>
+        @*</form>*@
+
+    </center>
+</body>
+<script>
+    $("input")
+        .keyup(function () {
+            var value = $(this).val();
+            $(this).text(value);
+        })
+        .keyup();
+</script>

@@ -1,0 +1,29 @@
+﻿@model  EventViewModel
+
+    <tr>
+        <td class="my-th">
+            <input type="hidden" asp-for="@Model.Id">
+            <input asp-for="@Model.Id" class="form-control disabled" style="border:0px" />
+        </td>
+        <td class="my-th">
+            <input id="@("Name"+Model.Id)" asp-for="@Model.EventName" class="form-control" style="border:0px" />
+        </td>
+        <td class="my-th">
+            <input id="@("First"+Model.Id)" asp-for="@Model.OddsForFirstTeam" class="form-control" style="border:0px" />
+        </td>
+        <td class="my-th">
+            <input id="@("Draw"+Model.Id)" asp-for="@Model.OddsForDraw" class="form-control" style="border:0px" />
+        </td>
+        <td class="my-th">
+            <input id="@("Second"+Model.Id)" asp-for="@Model.OddsForSecondTeam" class="form-control" style="border:0px" />
+        </td>
+        <td class="my-th">
+            <input id="@("Date"+Model.Id)" asp-for="@Model.EventStartDate" class="form-control" style="border:0px" />
+        </td>
+        <td>
+            <input type="submit" value="Save" class="btn saveBtn" data-eventId="@Model.Id" data-eventName="@Model.EventName"
+                   data-eventFirst="@Model.OddsForFirstTeam" data-eventDraw="@Model.OddsForDraw"
+                   data-eventSecond="@Model.OddsForSecondTeam" data-eventDate="@Model.EventStartDate" />
+        </td>
+        <td><button class="btn ">Delete</button></td>
+    </tr>

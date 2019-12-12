@@ -52,7 +52,7 @@ namespace GVC_BettingCalendar
             }
             else
             {
-                app.UseExceptionHandler("/Home/Error");
+                app.UseExceptionHandler("/Event/Error");
                
                 app.UseHsts();
             }
@@ -65,7 +65,7 @@ namespace GVC_BettingCalendar
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{controller=Event}/{action=TablePreviewMode}/{id?}");
             });
         }
     }

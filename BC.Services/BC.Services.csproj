@@ -4,4 +4,9 @@
     <TargetFramework>netcoreapp2.2</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\BC.Data\BC.Data.csproj" />
+    <ProjectReference Include="..\BC.DTOs\BC.DTOs.csproj" />
+  </ItemGroup>
+
 </Project>
