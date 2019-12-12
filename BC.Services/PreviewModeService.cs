@@ -22,6 +22,7 @@ namespace BC.Services
         {
             //make pagination
             var events = await _context.Events
+                                       .Where(e=>e.IsDeleted == null)
                                        .Select(e => e.MapToEventDTO())
                                        .ToListAsync();
             return events;

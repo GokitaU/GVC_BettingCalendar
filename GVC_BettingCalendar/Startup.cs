@@ -36,8 +36,8 @@ namespace GVC_BettingCalendar
 
             services.AddDomainServices();
             services.AddScoped<IJsonManager, JsonManager>();
-
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddMvc().AddNToastNotifyToastr();
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
@@ -60,6 +60,8 @@ namespace GVC_BettingCalendar
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
+
+            app.UseNToastNotify();
 
             app.UseMvc(routes =>
             {

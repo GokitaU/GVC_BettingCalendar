@@ -39,6 +39,15 @@ namespace BC.Services
 
             return updatedEventDto;
         }
+        public async Task<string> DeleteEvent(int id)
+        {
+            var eventToBeDeleted = await GetEventById(id);
+            eventToBeDeleted.IsDeleted = DateTime.Now;
+            await _context.SaveChangesAsync();
+            return eventToBeDeleted.EventName;
+        }
+            
+
         private async Task<Event> GetEventById(int id)
         {
             //validate

@@ -8,6 +8,7 @@ using GVC_BettingCalendar.Models;
 using BC.Services.Contracts;
 using BC.Web.Mappers;
 using BC.Web.Models;
+using NToastNotify;
 
 namespace GVC_BettingCalendar.Controllers
 {
@@ -15,12 +16,15 @@ namespace GVC_BettingCalendar.Controllers
     {
         private readonly IPreviewModeService _previewModeService;
         private readonly IEditModeService _editModeService;
+        private readonly IToastNotification _toast;
 
         public EventController(IPreviewModeService previewModeService,
-                               IEditModeService editModeService)
+                               IEditModeService editModeService,
+                               IToastNotification toast)
         {
             _previewModeService = previewModeService;
             _editModeService = editModeService;
+            _toast = toast;
         }
 
         [HttpGet]
@@ -45,11 +49,27 @@ namespace GVC_BettingCalendar.Controllers
 
         public async Task<IActionResult> UpdateEvent(int id, string name, string first, string draw, string second, string date)
         {
-            var updatedEventDto = await _editModeService.UpdateEvent(id, name, first, draw, second, date);
+            try
+            {
+                var updatedEventDto = await _editModeService.UpdateEvent(id, name, first, draw, second, date);
 
-            var updatedEventVm = updatedEventDto.MapToEventVm();
+                var updatedEventVm = updatedEventDto.MapToEventVm();
 
-            return PartialView("_UpdatedRowPartial",updatedEventVm);
+                _toast.AddSuccessToastMessage($"You successfully updated event!");
+
+                return PartialView("_UpdatedRowPartial", updatedEventVm);
+            }
+            catch (Exception ex)
+            {
+                _toast.AddErrorToastMessage(ex.Message);
+                throw new ArgumentException(ex.Message);
+            }
+        }
+
+        public async Task DeleteEvent(int id)
+        {
+            var deletedEventDto = await _editModeService.DeleteEvent(id);
+            _toast.AddSuccessToastMessage($"You successfully delete event!");
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

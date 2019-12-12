@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BC.Data.Migrations
 {
     [DbContext(typeof(BettingContext))]
-    [Migration("20191212013221_Initial")]
+    [Migration("20191212163909_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -31,6 +31,8 @@ namespace BC.Data.Migrations
                         .IsRequired();
 
                     b.Property<DateTime>("EventStartDate");
+
+                    b.Property<DateTime?>("IsDeleted");
 
                     b.Property<decimal>("OddsForDraw")
                         .HasConversion(new ValueConverter<decimal, decimal>(v => default(decimal), v => default(decimal), new ConverterMappingHints(precision: 38, scale: 17)))

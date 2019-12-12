@@ -25,6 +25,7 @@ namespace BC.DTOs
 
         [Required]
         public DateTime EventStartDate { get; set; }
+        public DateTime? IsDeleted { get; set; }
 
     }
 }

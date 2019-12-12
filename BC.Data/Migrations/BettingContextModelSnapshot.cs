@@ -30,6 +30,8 @@ namespace BC.Data.Migrations
 
                     b.Property<DateTime>("EventStartDate");
 
+                    b.Property<DateTime?>("IsDeleted");
+
                     b.Property<decimal>("OddsForDraw")
                         .HasConversion(new ValueConverter<decimal, decimal>(v => default(decimal), v => default(decimal), new ConverterMappingHints(precision: 38, scale: 17)))
                         .HasColumnType("decimal(18,2)");

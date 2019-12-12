@@ -14,6 +14,7 @@ namespace BC.DTOs.Mappers
             eventDTO.OddsForDraw = eventCtx.OddsForDraw;
             eventDTO.OddsForSecondTeam = eventCtx.OddsForSecondTeam;
             eventDTO.EventStartDate = eventCtx.EventStartDate;
+            eventDTO.IsDeleted = eventCtx.IsDeleted;
 
             return eventDTO;
         }

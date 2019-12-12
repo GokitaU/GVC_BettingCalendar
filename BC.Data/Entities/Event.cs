@@ -25,5 +25,6 @@ namespace BC.Data.Entities
 
         [Required]
         public DateTime EventStartDate { get; set; }
+        public DateTime? IsDeleted { get; set; }
     }
 }

@@ -45,14 +45,12 @@ $('.saveBtn').on("click", function () {
             a.closest('tr').replaceWith(result);
 
             console.log(result)
-            //a.html('<i style="color:red" class="fa fa-heart fa-lg text-danger"></i > <spanstyle="color:gold">' + result + '</span>').removeClass("like-2").addClass("unlike-2");
+            
+        },
+        fail: function (xhr, textStatus, errorThrown) {
+            alert('request failed');
+            window.location = "/Error/CustomError";
         }
-        //},
-        //fail: function (xhr, textStatus, errorThrown) {
-        //    alert('request failed');
-        //    window.location = "/Error/CustomError";
-        //}
-
     })
 
 

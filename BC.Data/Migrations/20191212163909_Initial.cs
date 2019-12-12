@@ -18,7 +18,8 @@ namespace BC.Data.Migrations
                     OddsForFirstTeam = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     OddsForDraw = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     OddsForSecondTeam = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    EventStartDate = table.Column<DateTime>(nullable: false)
+                    EventStartDate = table.Column<DateTime>(nullable: false),
+                    IsDeleted = table.Column<DateTime>(nullable: true)
                 },
                 constraints: table =>
                 {
