@@ -55,21 +55,28 @@ namespace GVC_BettingCalendar.Controllers
 
                 var updatedEventVm = updatedEventDto.MapToEventVm();
 
-                _toast.AddSuccessToastMessage($"You successfully updated event!");
 
                 return PartialView("_UpdatedRowPartial", updatedEventVm);
             }
             catch (Exception ex)
             {
-                _toast.AddErrorToastMessage(ex.Message);
                 throw new ArgumentException(ex.Message);
             }
         }
 
+        public async Task<IActionResult> AddEvent(string name, string first, string draw, string second, string date)
+        {
+            //validation
+            var addedEventDto = await _editModeService.AddEvent(name, first, draw, second, date);
+            var addedEventVm = addedEventDto.MapToEventVm();
+
+            return PartialView("_UpdatedRowPartial", addedEventVm);
+        }
+
         public async Task DeleteEvent(int id)
         {
+            //validation
             var deletedEventDto = await _editModeService.DeleteEvent(id);
-            _toast.AddSuccessToastMessage($"You successfully delete event!");
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

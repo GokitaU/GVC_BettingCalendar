@@ -8,5 +8,7 @@ namespace BC.Services.Contracts
         Task<EventDTO> UpdateEvent(int id, string name, string first, string draw, string second, string date);
 
         Task<string> DeleteEvent(int id);
+
+        Task<EventDTO> AddEvent(string name, string first, string draw, string second, string date);
     }
 }

@@ -12,9 +12,9 @@
     </form>
     <center>
         @*<form asp-controller="Event" asp-action="Update" method="post"
-            enctype="multipart/form-data">*@
+        enctype="multipart/form-data">*@
 
-        <table class="tableBody" style="padding-top:100px">
+        <table id="tableEdit" class="tableBody" style="padding-top:100px">
             <tr>
                 <th class="my-th" style="width:220px">EventId</th>
                 <th class="my-th" style="width:220px">EventName</th>
@@ -27,10 +27,10 @@
             {
                 @*<div asp-validation-summary="ModelOnly" class="text-danger"></div>*@
                 @*data-id="@item.Id" data-name="@item.EventName"
-                    data-first="@item.OddsForFirstTeam" data-draw="@item.OddsForDraw"
-                    data-second="@item.OddsForSecondTeam" data-date="@item.EventStartDate"*@
-                <tr>
-                    <td class="my-th">
+                data-first="@item.OddsForFirstTeam" data-draw="@item.OddsForDraw"
+                data-second="@item.OddsForSecondTeam" data-date="@item.EventStartDate"*@
+                <tr class="editableRows">
+                    <td class="my-th" id="idField">
                         <input type="hidden" asp-for="@Model[i].Id">
                         @Model[i].Id
                     </td>
@@ -61,15 +61,17 @@
             }
 
         </table>
+        <input type="hidden" value="0" id="total_row">
+        <button class="btn-group float-md-left" style="margin-top:50px" id="addBtn" value="AddEvent">AddEvent</button>
         @*</form>*@
 
     </center>
 </body>
-<script>
+@*<script>
     $("input")
         .keyup(function () {
             var value = $(this).val();
             $(this).text(value);
         })
         .keyup();
-</script>
+</script>*@

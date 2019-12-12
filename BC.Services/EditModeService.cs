@@ -39,6 +39,29 @@ namespace BC.Services
 
             return updatedEventDto;
         }
+
+
+        public async Task<EventDTO> AddEvent(string name, string first, string draw, string second, string date)
+        {
+            //validate all...
+            var eventCtx = new Event
+            {
+                EventName = name,
+                OddsForFirstTeam = double.Parse(first),
+                OddsForDraw = double.Parse(draw),
+                OddsForSecondTeam = double.Parse(second),
+            };
+
+            _context.Events.Add(eventCtx);
+
+            await _context.SaveChangesAsync();
+
+            var addedEventDto = eventCtx.MapToEventDTO();
+
+            return addedEventDto;
+        }
+
+
         public async Task<string> DeleteEvent(int id)
         {
             var eventToBeDeleted = await GetEventById(id);
@@ -46,7 +69,7 @@ namespace BC.Services
             await _context.SaveChangesAsync();
             return eventToBeDeleted.EventName;
         }
-            
+
 
         private async Task<Event> GetEventById(int id)
         {
