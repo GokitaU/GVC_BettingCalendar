@@ -25,5 +25,7 @@
                data-eventFirst="@Model.OddsForFirstTeam" data-eventDraw="@Model.OddsForDraw"
                data-eventSecond="@Model.OddsForSecondTeam" data-eventDate="@Model.EventStartDate" />
     </td>
-    <td><button class="btn ">Delete</button></td>
+    <td>
+        <input type="submit" value="Delete" data-eventId="@Model.Id" class="btn deleteBtn" />
+    </td>
 </tr>

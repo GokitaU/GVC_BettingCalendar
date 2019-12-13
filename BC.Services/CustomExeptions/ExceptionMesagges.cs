@@ -9,5 +9,6 @@
         public const string PreviewModeServiceNull = "PreviewModeService cannot be null!";
         public const string EditModeServiceContextNull = "EditModeServiceContext cannot be null!";
         public const string ToastNull = "Toast cannot be null!";
+        public const string InvalidId = "Invalid Id!";
     }
 }

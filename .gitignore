@@ -337,3 +337,5 @@ ASALocalRun/
 .localhistory/
 desktop.ini
 
+/BC.Data/Migrations/20191213005203_Initial.Designer.cs
+/BC.Data/Migrations/20191213005203_Initial.cs

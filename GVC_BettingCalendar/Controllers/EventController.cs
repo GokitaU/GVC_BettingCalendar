@@ -97,8 +97,16 @@ namespace GVC_BettingCalendar.Controllers
 
         public async Task DeleteEvent(int id)
         {
-            //validation
-            var deletedEventDto = await _editModeService.DeleteEvent(id);
+            try
+            {
+                id.ValidateIfNull();
+                var deletedEventDto = await _editModeService.DeleteEvent(id);
+            }
+            catch (BetException ex)
+            {
+                _toast.AddErrorToastMessage(ex.Message);
+                throw new BetException(ex.Message);
+            }
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
